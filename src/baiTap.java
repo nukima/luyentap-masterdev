@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 class baiTap {
 
     public static int arraySum(int[] array) {
@@ -10,21 +14,28 @@ class baiTap {
     }
 
 
-    public static char getMostFreqChar(String str) {
+    public static ArrayList<Character> getMostFreqChar(String str) {
         //Method 2
         int[] count = new int[256];
         for (int i = 0; i < str.length(); i++) {
-            count[str.charAt(i)]++;
+            int index = (int)str.charAt(i);
+            count[index]++;
         }
-        int max = 0;
-        char maxChar = ' ';
+
+        //convert int[] to Integer[]
+        Integer[] count2 = new Integer[256];
         for (int i = 0; i < count.length; i++) {
-            if (count[i] > max) {
-                max = count[i];
-                maxChar = (char) i;
+            count2[i] = count[i];
+        }
+
+        int max = Collections.max(Arrays.asList(count2));
+        ArrayList<Character> chars = new ArrayList<>();
+        for (int i = 0; i < count.length; i++) {
+            if(count[i] == max) {
+                chars.add((char)i);
             }
         }
-        return maxChar;
+        return chars;
     }
 
 
