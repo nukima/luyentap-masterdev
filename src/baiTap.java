@@ -21,14 +21,12 @@ class baiTap {
             int index = (int)str.charAt(i);
             count[index]++;
         }
-
-        //convert int[] to Integer[]
-        Integer[] count2 = new Integer[256];
-        for (int i = 0; i < count.length; i++) {
-            count2[i] = count[i];
+        int max = -1;
+        for (int value : count) {
+            if (value > max) {
+                max = value;
+            }
         }
-
-        int max = Collections.max(Arrays.asList(count2));
         ArrayList<Character> chars = new ArrayList<>();
         for (int i = 0; i < count.length; i++) {
             if(count[i] == max) {
